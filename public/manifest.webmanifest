@@ -1,0 +1,16 @@
+{
+    "name": "ChildsBridge CodeSprout",
+    "short_name": "CodeSprout",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#fffdf7",
+    "theme_color": "#15a37d",
+    "icons": [
+        {
+            "src": "/logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
