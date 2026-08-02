@@ -23,3 +23,45 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Dependencies
+node_modules/
+vendor/
+
+# Laravel generated files
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/bootstrap/cache/*
+
+# Frontend build files
+/public/build/
+/public/hot
+
+# Testing and coverage
+.phpunit.result.cache
+coverage/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp*.zip
