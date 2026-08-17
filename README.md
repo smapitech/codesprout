@@ -1,172 +1,343 @@
-# ChildsBridge CodeSprout
+# 🌱 Child’s Bridge CodeSprout
 
-CodeSprout is a production-oriented Laravel 12 and React/Inertia foundation for a one-year, game-based computer readiness and early coding programme for children aged 6 to 7.
+## Game-Based Digital Skills & Early Coding Platform
 
-## Dashboard Login
+**CodeSprout** is the learning engine behind the early-years programme of **Child’s Bridge AI Academy**.
 
-Use the adult login page for administrator, teacher and parent dashboards. Use the learner login page for child dashboards.
+It is designed to help young learners build essential computer skills, coding confidence, and digital problem-solving ability through structured learning worlds, missions, games, projects, assignments, and guided progression.
 
-- Adult login: `http://localhost/login`
-- Learner login: `http://localhost/child-login`
-- Administrator: `admin@childsbridge.test` / `Password123!`
-- Teacher: `teacher@childsbridge.test` / `Password123!`
-- Parent: `parent@childsbridge.test` / `Password123!`
-- Child learner ID: `CB-LEARN-1001` / PIN `1234`
-- Child learner ID: `CB-LEARN-1002` / PIN `2468`
+CodeSprout forms part of the wider **FutureBridge AI** education ecosystem developed by **SMAPIS Technologies — Smart Multi-Agent Platform & Intelligent Systems**.
 
-## What is in Phase 1
+🌐 **Live Platform:** https://childsbridge.site
 
-- Laravel web application with Vite, Inertia React and TypeScript
-- Role-aware access for administrators, teachers, parents and children
-- Spatie-based roles and permissions
-- Secure child PIN login with hashing and rate limiting
-- Parent-child and teacher-class relationship foundations
-- Placeholder dashboards for all four roles
-- Child-safe design tokens and a responsive learning-first layout
-- Seeded development data and automated tests
+---
 
-## What is in Phase 2
+# 🎯 The Problem
 
-- Curriculum, world, unit, lesson and stage foundation
-- Publication validation, draft/published/archived status handling and safe read-only child browsing
-- Admin curriculum builder, preview and nested move/duplicate route foundations
-- Teacher curriculum browsing and preview access to published content only
-- Child journey view that hides draft and archived curriculum content
-- Curriculum import/export services backed by structured JSON
-- Curriculum ordering, duplication and prerequisite validation services
-- Additional tests for curriculum access, publication rules, import rollback and ordering
+Many young learners are introduced to technology through disconnected coding exercises, short games, or one-off tutorials.
 
-Full Phase 2 architecture notes are documented in `docs/curriculum-phase-2.md`.
+This often creates three challenges:
 
-## What is in Phase 3
+* Progress is difficult to measure
+* Learners may complete activities without mastering the underlying skill
+* Parents and teachers have limited visibility into what the child can actually do
 
-- Assignment library, versioning and immutable published versions
-- Assignment builder foundations for administrators and teachers
-- Question-handler architecture for automatic and manual grading
-- Class, learner-group and individual-child allocation
-- Child “My Missions” experience with start, autosave, resume and submit flows
-- Teacher marking queue, feedback, return-for-retry and completion flows
-- Parent assignment visibility for linked children only
-- Assignment reports, audit records and lifecycle events for future rewards/progress work
+CodeSprout addresses this by combining structured curriculum, mastery-based progression, game-based learning, guided assignments, coding projects, and role-specific dashboards within one learning platform.
 
-Full Phase 3 architecture notes are documented in `docs/assignment-phase-3.md`.
+---
 
-## What is in Phase 4
+# 💡 Our Solution
 
-- Approved game definitions and immutable game versions
-- Handler-based game engine for computer, mouse and keyboard activities
-- Game sessions with start, pause, resume, completion and performance recording
-- Child-safe game payloads that hide expected answers
-- Assignment-game integration through assignment items
-- Curriculum launch context through lesson stages
-- Teacher game library, previews and result reports
-- Parent released-result summaries for linked children
-- Game lifecycle events for future rewards and progress work
+CodeSprout helps learners move through a progressive digital-learning journey:
 
-Full Phase 4 architecture notes are documented in `docs/game-engine-phase-4.md`.
+**Computer Readiness → Keyboard & Mouse Skills → Coding Foundations → Web Development → Projects → Portfolio**
 
-## Connected Administration and Phase 7
+The platform is designed around practical progression rather than simply completing lessons.
 
-- Professional School Management workspace for creating administrator, teacher, parent and child accounts
-- Class creation, teacher assignment, child enrolment and parent-child linking with audit records
-- Role-scoped teacher and parent dashboards backed by assignments, progress, released feedback and HTML project data
-- Dynamic child dashboard missions from authenticated allocations, published exercises and active projects
-- Phase 7 HTML exercise and project versioning, server-side sanitisation, structural validation and teacher review
-- Debounced server-sanitised live preview rendered in a scriptless sandbox with restrictive CSP
-- Configurable Phase 7 feature flags that hide disabled routes and navigation without deleting learner work
-- Private, teacher-approved project showcase summaries for linked parents
+Learners advance through structured stages while teachers and parents can monitor progress, assignments, projects, and learning outcomes.
 
-Full Phase 7 architecture notes are documented in `docs/html-engine-phase-7.md`.
+---
 
-## Curriculum Hierarchy
+# 🧩 Learning Architecture
 
-CodeSprout uses this curriculum hierarchy:
+The current curriculum structure includes:
 
-- Curriculum
-- World
-- Weekly Unit
-- Lesson
-- Stage
+* **12 Learning Worlds**
+* **48 Weekly Units**
+* **144 Lessons**
+* **576 Learning Stages**
+* **48 Tracked Skills**
 
-The seeded one-year programme currently contains:
+The curriculum hierarchy follows:
 
-- 1 curriculum
-- 12 worlds
-- 48 weekly units
-- 144 lessons
-- 576 stages
-- 48 skills
+**Curriculum → World → Weekly Unit → Lesson → Stage**
 
-## Architecture Notes
+This structure allows learning content to grow progressively while maintaining clear prerequisites, progression rules, and measurable outcomes.
 
-- `users` is the core identity table
-- `user_profiles`, `teacher_profiles` and `child_profiles` carry role-specific profile data
-- `parent_child_relationships`, `class_teacher_assignments` and `class_enrolments` model school relationships
-- `academic_cohorts`, `classes`, `application_settings` and `audit_logs` support the school and platform foundation
-- `curricula`, `curriculum_worlds`, `curriculum_units`, `lessons`, `lesson_stages` and `skills` model the learning hierarchy
-- `curriculum_world_prerequisites`, `lesson_prerequisites` and `lesson_stage_prerequisites` model unlock order and prerequisite chains
-- `assignments`, `assignment_versions`, `assignment_items`, `assignment_allocations`, `assignment_attempts`, `assignment_responses` and related tables model the assignment lifecycle
-- `game_definitions`, `game_versions`, `game_sessions`, `game_session_rounds` and `game_results` model safe gameplay and performance recording
-- Routes are split by role area in `routes/admin.php`, `routes/teacher.php`, `routes/parent.php` and `routes/child.php`
-- The internal curriculum export endpoint lives at `GET /api/curricula/{curriculum}`
-- Child login uses hashed PINs and throttling; there is no public registration flow
+---
 
-## Content Statuses
+# 🎮 Game-Based Learning
 
-Curriculum content uses three statuses:
+CodeSprout includes a game engine designed to make foundational computer skills engaging and practical.
 
-- `draft`
-- `published`
-- `archived`
+Learning experiences can include:
 
-Publication is validated by service before content becomes visible to teachers or children.
+* Keyboard practice
+* Typing challenges
+* Mouse-control activities
+* Drag-and-drop tasks
+* Computer-navigation activities
+* Coding games
+* Interactive exercises
+* Timed challenges
+* Skill-based missions
 
-## Curriculum Workflow
+Game sessions can track learner performance and support future progress analytics.
 
-- The admin curriculum root lives in `routes/admin.php`
-- The curriculum builder shows the full hierarchy and validation state
-- Teachers can browse published curriculum in read-only mode
-- Children only receive published content in their journey
-- Draft or archived worlds are hidden from child routes and child page source
+---
 
-## Import and Export
+# 🧑‍🎓 Student Experience
 
-- Export JSON for a curriculum with `GET /api/curricula/{curriculum}`
-- Import JSON through the admin import endpoint at `POST /admin/curriculum/import`
-- The JSON payload uses `schema_version`, `curriculum`, `worlds` and `skills`
-- The same services are used by the import/export surfaces and the phase 2 seeders
+Learners have access to a child-friendly dashboard designed around missions, progress, and practical activities.
 
-## Curriculum JSON Shape
+Core learner features include:
 
-- `schema_version`
-- `curriculum`
-    - root metadata
-    - `worlds`
-        - `units`
-            - `lessons`
-                - `stages`
-- `skills`
+* Personal learning journey
+* Assigned missions
+* Games
+* Coding exercises
+* Project work
+* Progress tracking
+* Resume-and-continue learning
+* Structured curriculum access
+* Safe authentication
+* Age-appropriate interface
 
-The import service validates the full structure before inserting records and wraps writes in a transaction.
+The child interface is designed to remain simple, visual, touch-friendly, and distraction-free.
 
-## Seeder Structure
+---
 
-- `database/seeders/Data/CodeSproutCurriculumSeedData.php` holds the structured seed blueprint
-- `database/seeders/CurriculumSeeder.php` imports the blueprint
-- `database/seeders/DatabaseSeeder.php` wires the curriculum seeder into the full development seed
-- Seed counts are intentionally stable so tests can confirm the full hierarchy from a clean database
+# 🧑‍🏫 Teacher Experience
 
-## Development Credentials
+Teachers can:
 
-These credentials are for local development only and must not be used in production.
+* Browse published curriculum
+* Assign learning activities
+* Review learner progress
+* Mark assignments
+* Provide feedback
+* Monitor game performance
+* Review coding projects
+* Track class activity
+* Support learners through structured progression
 
-- Administrator: `admin@childsbridge.test` / `Password123!`
-- Teacher: `teacher@childsbridge.test` / `Password123!`
-- Parent: `parent@childsbridge.test` / `Password123!`
-- Child learner ID: `CB-LEARN-1001` / PIN `1234`
-- Child learner ID: `CB-LEARN-1002` / PIN `2468`
+Teachers only see curriculum and resources appropriate to their role and assigned learners.
 
-## Install
+---
+
+# 👨‍👩‍👧 Parent Experience
+
+Parents can view progress for linked children.
+
+Parent features include:
+
+* Learning progress
+* Assignment results
+* Released teacher feedback
+* Project summaries
+* Learning activity visibility
+* Child-specific dashboards
+
+This gives parents clearer insight into what their child is actually learning and building.
+
+---
+
+# 🛠️ Administration
+
+Administrators manage the platform through a dedicated workspace.
+
+Administrative capabilities include:
+
+* User management
+* Teacher accounts
+* Parent accounts
+* Child learner accounts
+* Academic cohorts
+* Classes
+* Teacher assignments
+* Parent-child relationships
+* Curriculum creation
+* Curriculum publishing
+* Assignment management
+* Game management
+* Application settings
+* Audit records
+
+---
+
+# 📚 Curriculum Management
+
+CodeSprout includes a structured curriculum engine supporting:
+
+* Draft content
+* Published content
+* Archived content
+* Learning prerequisites
+* Curriculum ordering
+* World progression
+* Lesson progression
+* Stage progression
+* Curriculum preview
+* Import and export
+* Structured JSON curriculum data
+
+Only published curriculum is visible to learners.
+
+---
+
+# 📝 Assignment Engine
+
+The platform supports practical learning assignments with:
+
+* Versioned assignments
+* Automatic and manual grading
+* Individual learner allocation
+* Class allocation
+* Learner groups
+* Autosave
+* Resume functionality
+* Submission workflows
+* Teacher marking
+* Feedback
+* Return-for-retry workflows
+* Parent result visibility
+
+Assignments are designed to support both automated exercises and teacher-reviewed practical work.
+
+---
+
+# 🌐 Early Web Development Engine
+
+CodeSprout includes structured early web-development activities.
+
+Learners can progressively work with:
+
+* HTML
+* CSS
+* Basic webpage structure
+* Guided web projects
+* Practical coding exercises
+* Live preview
+* Teacher review
+
+Learner-generated HTML is sanitised before preview and displayed within a restricted sandbox environment.
+
+---
+
+# 🔐 Child Safety & Access Control
+
+Child safety is a core part of the platform architecture.
+
+The platform includes:
+
+* Role-based permissions
+* Separate child authentication
+* Hashed learner PINs
+* Login throttling
+* Restricted curriculum visibility
+* Parent-child relationship controls
+* Teacher-class permissions
+* Private learner projects
+* Controlled project sharing
+* Audit records
+
+Public registration for child learners is intentionally disabled.
+
+---
+
+# 🏗️ Technology Stack
+
+CodeSprout is built with:
+
+* **Laravel 12**
+* **PHP**
+* **React**
+* **Inertia.js**
+* **TypeScript**
+* **Vite**
+* **MySQL / MariaDB**
+* **Spatie Roles & Permissions**
+* **REST-style APIs**
+* **Automated Testing**
+* **Responsive UI Architecture**
+
+---
+
+# 🧱 Platform Architecture
+
+The application is structured around role-based areas:
+
+* Administrator
+* Teacher
+* Parent
+* Child
+
+Core platform domains include:
+
+* Identity
+* Profiles
+* Curriculum
+* Classes
+* Assignments
+* Games
+* Projects
+* Progress
+* Relationships
+* Settings
+* Audit logs
+
+The architecture is designed to support continued expansion into AI-assisted learning, deeper progress analytics, adaptive pathways, and advanced coding environments.
+
+---
+
+# 🤖 AI & Future Development
+
+CodeSprout is part of the wider **FutureBridge AI** vision.
+
+Future development areas include:
+
+* AI-assisted tutoring
+* Personalised learning pathways
+* Skills-gap detection
+* Intelligent recommendations
+* Adaptive difficulty
+* AI-assisted project feedback
+* Parent progress summaries
+* Teacher support tools
+* Learning analytics
+* Portfolio development
+* Career-path preparation for older learners
+
+---
+
+# 🚀 Project Status
+
+**Status:** Active Development
+
+CodeSprout was originally developed through private and local development workflows and has been progressively consolidated into the Child’s Bridge platform and GitHub engineering portfolio.
+
+The platform continues to evolve as part of the broader Child’s Bridge and FutureBridge AI roadmap.
+
+---
+
+# 📸 Screenshots
+
+Platform screenshots should be stored under:
+
+```text
+docs/screenshots/
+```
+
+Recommended screenshots include:
+
+* `landing-page.png`
+* `child-dashboard.png`
+* `teacher-dashboard.png`
+* `parent-dashboard.png`
+* `curriculum-builder.png`
+* `assignment-view.png`
+* `game-engine.png`
+* `html-project.png`
+
+Example:
+
+```markdown
+![Child Dashboard](docs/screenshots/child-dashboard.png)
+```
+
+---
+
+# 🧪 Local Development
 
 ```bash
 composer install
@@ -175,30 +346,102 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate:fresh --seed
 npm run build
-```
-
-## Run
-
-```bash
 php artisan serve
 ```
 
-## Test
+Run automated tests with:
 
 ```bash
 php artisan test
 ```
 
-## Notes
+---
 
-- Production should use MySQL via `.env`
-- The child dashboard is intentionally playful and touch-friendly
-- Public leaderboards are intentionally disabled
-- Specialised game engines and detailed progress analytics are intentionally deferred
+# 🔒 Security Note
 
-## Adding Curriculum Content
+Sensitive production information is not stored in this repository.
 
-- Add a new world by extending the structured seed data or importing a validated JSON payload
-- Add a lesson by attaching it to the correct weekly unit and giving it at least one stage before publication
-- Add a stage by defining a valid stage type, interaction type, instruction text and estimated duration
-- The publication service should be the final gate before teachers or children see new content
+The following should never be committed:
+
+* `.env`
+* API keys
+* database passwords
+* SMTP credentials
+* payment credentials
+* production backups
+* private learner data
+* production uploads
+
+---
+
+# 🌍 About Child’s Bridge AI Academy
+
+**Child’s Bridge AI Academy** prepares children and teenagers for the future through practical technology education.
+
+Learning areas include:
+
+* Coding
+* Python
+* JavaScript
+* Web development
+* Artificial intelligence
+* AI agents
+* Git and GitHub
+* Software projects
+* Problem-solving
+* Digital responsibility
+* Portfolio development
+
+🌐 https://childsbridge.site
+
+---
+
+# 🧠 About SMAPIS Technologies
+
+**SMAPIS Technologies** means:
+
+## Smart Multi-Agent Platform & Intelligent Systems
+
+SMAPIS Technologies develops:
+
+* Artificial intelligence platforms
+* Multi-agent systems
+* SaaS products
+* Education technology
+* Business automation
+* Intelligent software systems
+
+🌐 https://smapis.net
+
+---
+
+# 🤝 Collaboration
+
+We are open to collaboration in areas including:
+
+* Education technology
+* AI-assisted learning
+* Game-based education
+* Coding education
+* Learning analytics
+* School technology
+* AI agents
+* SaaS development
+* International education partnerships
+
+---
+
+# 📫 Links
+
+**Child’s Bridge AI Academy**
+https://childsbridge.site
+
+**SMAPIS Technologies**
+https://smapis.net
+
+**GitHub**
+https://github.com/smapitech
+
+---
+
+> **Building digital confidence early, one skill, one project, and one learner at a time.**
